@@ -1,4 +1,4 @@
-package com.simsimhi;
+package org.simsimhi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
