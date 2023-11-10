@@ -1,4 +1,4 @@
-package org.simsimhi;
+package com.simsimhi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
