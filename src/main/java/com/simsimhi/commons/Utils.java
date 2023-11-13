@@ -2,6 +2,8 @@ package com.simsimhi.commons;
 
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,9 @@ public class Utils {
     private static ResourceBundle errorsBundle;
 
     private final HttpServletRequest request;
+
+    private final HttpSession session;
+
 
 
     static {
@@ -33,9 +38,19 @@ public class Utils {
     }
 
     public boolean isMobile() {
+        String device = (String)session.getAttribute("device");
+
+        if(device != null){
+            return device.equals("mobile");
+        }
+
         // 요청 헤더 User-Agent
         boolean isMobile = request.getHeader("User-Agent")
-                .matches(".*(iPhone|iPod|iPad|BlackBerry|Android|Windows CE|LG|MOT|SAMSUNG|SonyEricsson).*");
+                .matches(".*(iPhone|iPod|" +
+                        "iPad|BlackBerry|" +
+                        "Android|Windows CE|" +
+                        "LG|MOT|SAMSUNG|" +
+                        "SonyEricsson).*");
 
         return isMobile;
     }
