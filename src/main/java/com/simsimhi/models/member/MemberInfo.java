@@ -1,5 +1,6 @@
 package com.simsimhi.models.member;
 
+import com.simsimhi.entities.Member;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,20 +10,26 @@ import java.util.Collection;
 
 @Data @Builder
 public class MemberInfo implements UserDetails {
+    private String email;
+    private String password;
+
+    private Member member;
+
+    private Collection<? extends GrantedAuthority> authorities;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override
