@@ -20,5 +20,10 @@ public class MemberInfoService implements UserDetailsService {
 
 
         return MemberInfo.builder()
+                .email(member.getEmail())
+                .password(member.getPassword())
+                .member(member)
+                .build();
+
     }
 }
