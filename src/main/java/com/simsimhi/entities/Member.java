@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 public class Member {
 
     @Id
-    private Long user_No;
+    private Long userNo;
     private String email;
     private String password;
 
-    private String user_Nm;
+    private String userNm;
     private String mobile;
     private LocalDateTime regDt;
     private LocalDateTime modDt;

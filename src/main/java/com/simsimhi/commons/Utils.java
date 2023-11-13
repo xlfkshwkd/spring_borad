@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+
 @Component
 @RequiredArgsConstructor
 public class Utils {
@@ -19,8 +20,6 @@ public class Utils {
     private final HttpServletRequest request;
 
     private final HttpSession session;
-
-
 
     static {
         validationsBundle = ResourceBundle.getBundle("messages.validations");
@@ -39,27 +38,24 @@ public class Utils {
 
     public boolean isMobile() {
         String device = (String)session.getAttribute("device");
-
-        if(device != null){
+        if (device != null) {
             return device.equals("mobile");
         }
 
-        // 요청 헤더 User-Agent
-        boolean isMobile = request.getHeader("User-Agent")
-                .matches(".*(iPhone|iPod|" +
-                        "iPad|BlackBerry|" +
-                        "Android|Windows CE|" +
-                        "LG|MOT|SAMSUNG|" +
-                        "SonyEricsson).*");
+        boolean isMobile = request.getHeader("User-Agent").matches(".*(iPhone|iPod|iPad|BlackBerry|Android|Windows CE|LG|MOT|SAMSUNG|SonyEricsson).*");
 
         return isMobile;
     }
-    public String tpl(String tplPath){
-       return String.format("%s/" +tplPath ,isMobile()?"mobile":"front");
 
+    public String tpl(String tplPath) {
+
+        return String.format("%s/" + tplPath, isMobile()?"mobile":"front");
     }
 
-
-
-
+    public static void loginInit(HttpSession session) {
+        session.removeAttribute("email");
+        session.removeAttribute("NotBlank_email");
+        session.removeAttribute("NotBlank_password");
+        session.removeAttribute("globalError");
+    }
 }

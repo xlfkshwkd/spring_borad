@@ -3,6 +3,10 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
+
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name ="_csrf_header" th:content="${_csrf.headerName}">
+
     <title th:if="${pageTitle != null}" th:text="${pageTitle}"></title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/common/css/style.css}">
@@ -22,6 +26,7 @@
     <script th:each="file : ${addScript}" th:src="@{/front/js/{file}.js(file=${file})}"></script>
 
     <th:block layout:fragment="addScript"></th:block>
+
 
 </head>
 <body>
