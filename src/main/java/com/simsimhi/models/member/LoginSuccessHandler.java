@@ -1,6 +1,7 @@
 package com.simsimhi.models.member;
 
 import com.simsimhi.commons.Utils;
+import com.simsimhi.entities.Member;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -14,11 +15,17 @@ import java.util.Objects;
 
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
+            throws IOException, ServletException {
 
         HttpSession session = request.getSession();
 
         Utils.loginInit(session);
+        /** 로그인 회원정보 세션 처리 편의  + */
+        MemberInfo memberInfo =(MemberInfo)authentication.getPrincipal();
+        System.out.println(memberInfo);
+        Member member =memberInfo.getMember();
+        session.setAttribute("loginMember",member);
 
 
         /*
