@@ -23,6 +23,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        /** 인증설정  로그인  */
         http.formLogin(f ->{
             f.loginPage("/member/login")
                     .usernameParameter("email")
@@ -36,9 +37,22 @@ public class SecurityConfig {
                     .logoutSuccessUrl("/member/login");
 
         });
+        /** 인증설정  로그인  E */
         http.headers(c ->{
             c.frameOptions(o ->o.sameOrigin());
+            
         });
+
+        /** 인가설정  접근통제  S*/
+        http.authorizeHttpRequests(c ->{
+           c.requestMatchers("/mypage/**").authenticated() //로그인한 회원만 접근 가능하다.
+                   .requestMatchers("/admin/**").hasAnyAuthority("ADMIN") //관리자만 접근
+                   .anyRequest().permitAll(); // 나머지 페이지는 권한 필요 X
+
+
+        });
+        /** 인가설정  접근통제  E*/
+        
 
         return http.build();
     }
