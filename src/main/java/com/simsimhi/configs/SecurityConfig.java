@@ -2,6 +2,9 @@ package com.simsimhi.configs;
 
 import com.simsimhi.models.member.LoginFailureHandler;
 import com.simsimhi.models.member.LoginSuccessHandler;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -9,10 +12,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.io.IOException;
 
 @Configuration
 @EnableConfigurationProperties(FileUploadConfig.class)
@@ -49,8 +56,20 @@ public class SecurityConfig {
                    .requestMatchers("/admin/**").hasAnyAuthority("ADMIN") //관리자만 접근
                    .anyRequest().permitAll(); // 나머지 페이지는 권한 필요 X
 
-
         });
+        http.exceptionHandling(c ->{
+           c.authenticationEntryPoint((req,resp,e)->{
+              String URI =req.getRequestURI();
+              if(URI.indexOf("/admin") != -1){ // 관리자 페이지 -401 응답 코드
+                resp.sendError(HttpServletResponse.SC_UNAUTHORIZED,"NOT AUTHORIZED");
+              }else { //회원 정보 페이지 /mypage
+                  String url =req.getContextPath() + "/member/login";
+                  resp.sendRedirect(url);
+
+              }
+           });
+        });
+
         /** 인가설정  접근통제  E*/
         
 
