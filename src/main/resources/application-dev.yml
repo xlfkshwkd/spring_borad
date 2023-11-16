@@ -2,10 +2,6 @@ server:
   port: 3000
 
 spring:
-  #프로필 설정
-  profiles:
-    active: dev
-
   # 데이터베이스 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
@@ -34,9 +30,6 @@ spring:
   thymeleaf:
     cache: false
     prefix: file:src/main/resources/templates/
-
-
-
 
 file:
   upload:
