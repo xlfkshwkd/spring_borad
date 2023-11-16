@@ -9,8 +9,22 @@ spring:
     username: PROJECT_BOARD
     password: _aA123456
 
-  flyway:
-    enabled: true
+#  flyway:
+#   enabled: true
+
+
+    # JPA 설정
+    jpa:
+      properties:
+        hibernate:
+          # 실행되는 쿼리를 콘솔에 출력
+          show_sql: true
+          format_sql: true
+          use_sql_comments: true
+          dialect: org.hibernate.dialect.OracleDialect
+      hibernate:
+        ddlAuto: create
+
 
     #파일 업로드 설정
   servlet:
