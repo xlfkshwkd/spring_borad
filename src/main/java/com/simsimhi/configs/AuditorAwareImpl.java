@@ -19,10 +19,10 @@ public class AuditorAwareImpl implements AuditorAware<String > {
         String email =null;
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Object principal =auth.getPrincipal();
+    //    Object principal =auth.getPrincipal();
 
-        if(auth != null && principal instanceof MemberInfo){
-            MemberInfo member =(MemberInfo) principal;
+        if(auth != null && auth.getPrincipal() instanceof MemberInfo){
+            MemberInfo member =(MemberInfo)auth.getPrincipal();
             email=member.getEmail();
 
         }
