@@ -2,16 +2,29 @@ server:
   port: 3000
 
 spring:
-  #프로필 설정
-  profiles:
-    active: dev
-
   # 데이터베이스 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521:orcl
     username: PROJECT_BOARD
     password: _aA123456
+
+#  flyway:
+#   enabled: true
+
+
+    # JPA 설정
+    jpa:
+      properties:
+        hibernate:
+          # 실행되는 쿼리를 콘솔에 출력
+          show_sql: true
+          format_sql: true
+          use_sql_comments: true
+          dialect: org.hibernate.dialect.OracleDialect
+      hibernate:
+        ddlAuto: create
+
 
     #파일 업로드 설정
   servlet:
@@ -31,9 +44,6 @@ spring:
   thymeleaf:
     cache: false
     prefix: file:src/main/resources/templates/
-
-
-
 
 file:
   upload:
