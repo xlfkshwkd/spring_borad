@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-@Entity
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
-public class BoardData extends BaseMember{
+@Entity
+@NoArgsConstructor @AllArgsConstructor
+public class BoardData extends BaseMember {
     @Id
     @GeneratedValue
     private Long seq;
@@ -29,10 +28,5 @@ public class BoardData extends BaseMember{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="userNo")
     private Member member;
-
-    /*
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<HashTag> tags =new ArrayList<>();
-    */
 
 }

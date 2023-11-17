@@ -35,12 +35,5 @@ public class Member extends Base {
     @Enumerated(EnumType.STRING)
     private MemberType mtype = MemberType.USER;
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "member", fetch = FetchType.EAGER)
-    private List<BoardData> items = new ArrayList<>();
-
-    @OneToOne
-    @JoinColumn(name="profile_seq")
-    private MemberProfile profile;
 
 }
