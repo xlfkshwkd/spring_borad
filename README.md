@@ -21,15 +21,14 @@
     + Ojdbc11
     + Thymeleaf Layout Dialect
     + ModelMapper
-   
 
 3. 설정
-
     + 파일 업로드
     + 정적 자원
     + 라이브 리로드
     + 타임리프
     + 프로필
+    + 스프링 부트 페이징 구현 
 
 4. 공통 설정
    + 예외 페이지
