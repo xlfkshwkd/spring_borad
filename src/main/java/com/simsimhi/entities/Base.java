@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 public abstract class Base {
     @Column(updatable = false)
     @CreatedDate
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
     @Column(insertable = false)
     @LastModifiedDate

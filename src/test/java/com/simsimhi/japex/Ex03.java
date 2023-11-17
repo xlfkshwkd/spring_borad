@@ -28,7 +28,7 @@ public class Ex03 {
         em.flush();
 
         BoardData data2 = em.find(BoardData.class,data.getSeq());
-        System.out.printf("created = %s , modifiedAt=%s \n",data2.getCreateAt(),
+        System.out.printf("created = %s , modifiedAt=%s \n",data2.getCreatedAt(),
                 data2.getModifiedAt());
         try {
             Thread.sleep(3000);
@@ -39,10 +39,11 @@ public class Ex03 {
         em.flush();
 
          data2 = em.find(BoardData.class,data.getSeq());
-        System.out.printf("created = %s , modifiedAt=%s \n",data2.getCreateAt(),
+        System.out.printf("created = %s , modifiedAt=%s \n",data2.getCreatedAt(),
                 data2.getModifiedAt());
 
     }
+
         //spring Security JPa
         // 로그인한 회원 정보
         // AuditorAware 인터페이스 스프링
