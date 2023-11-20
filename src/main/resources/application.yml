@@ -2,6 +2,10 @@ server:
   port: 3000
 
 spring:
+  # 프로필 설정
+  profiles:
+    active: dev
+
   # 데이터베이스 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
@@ -9,44 +13,51 @@ spring:
     username: PROJECT_BOARD
     password: _aA123456
 
-  sql:
-    init:
-      mode: always
+  # JPA 설정
+  jpa:
+    properties:
+      hibernate:
+        # 실행되는 쿼리를 콘솔에 출력
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        dialect: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddlAuto: update
 
-    #파일 업로드 설정
+  # 파일 업로드 설정
   servlet:
     multipart:
-      maxFile-size: 20MB
+      maxFileSize: 20MB
       maxRequestSize: 40MB
 
-  # 정적 자원 설정 css js 이미지
+  # 정적 자원 설정(CSS, JS, 이미지)
   resources:
-    staticLocations:file:src/main/resources/static/
+    staticLocations: file:src/main/resources/static/
 
   # 라이브 리로드 설정
   devtools:
-    livereloads:
+    livereload:
       enabled: true
-  #타임리프 설정
+
+  # 타임리프 설정
   thymeleaf:
     cache: false
     prefix: file:src/main/resources/templates/
 
-
-
+  flyway:
+    enabled: true
 
 file:
   upload:
     path: C:/uploads/
     url: /uploads/
 
-
-
-
-
 # 로거 설정
 logging:
   level:
     org:
-      springframework:
-        jdbc: trace
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
