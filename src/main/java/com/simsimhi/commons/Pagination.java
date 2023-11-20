@@ -1,8 +1,9 @@
-package com.simsimhi;
+package com.simsimhi.commons;
+
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.Data;
-
+import com.simsimhi.commons.Utils;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
