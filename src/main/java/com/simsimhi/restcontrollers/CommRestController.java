@@ -15,8 +15,8 @@ public class CommRestController {
         if(e instanceof CommonException){
             CommonException commonException =(CommonException) e;
             status =commonException.getStatus();
-
         }
+
         JSONData<Object> data =new JSONData<>();
         data.setSuccess(false);
         data.setStatus(status);

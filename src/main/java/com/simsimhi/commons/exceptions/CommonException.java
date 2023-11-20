@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 
 
 public class CommonException extends RuntimeException{
+    //오류 코드 설정
     private HttpStatus status;
 
     public CommonException(String message) {
@@ -18,4 +19,5 @@ public class CommonException extends RuntimeException{
     public HttpStatus getStatus() {
         return status;
     }
+
 }
