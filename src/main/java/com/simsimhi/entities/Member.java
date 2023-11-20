@@ -3,10 +3,6 @@ package com.simsimhi.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import com.simsimhi.commons.constants.MemberType;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
 
 @Data
 @Builder
