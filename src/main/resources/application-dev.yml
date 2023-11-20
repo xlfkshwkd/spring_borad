@@ -32,9 +32,6 @@ spring:
     cache: false
     prefix: file:src/main/resources/templates/
 
-
-
-
 file:
   upload:
     path: C:/uploads/
