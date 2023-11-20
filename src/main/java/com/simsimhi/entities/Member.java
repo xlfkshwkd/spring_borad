@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Builder
@@ -34,20 +33,9 @@ public class Member extends Base{
     @Column(length = 11)
     private String mobile;
 
-    @Column(length = 10,nullable = false)
+    @Column(length = 15,nullable = false)
     @Enumerated(EnumType.STRING)
     private MemberType mtype =MemberType.USER;
-
-    @Column(updatable = false)
-    @CreationTimestamp
-    private LocalDateTime regDt;
-
-    @Column(insertable = false )
-    @UpdateTimestamp
-    private LocalDateTime modDt;
-
-
-
 
     /*
     @Transient // 내부에서만 사용  DB 저장 X

@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
-@ControllerAdvice("org.koreait.controllers")
+@ControllerAdvice("com.simsimhi.controllers")
 public class CommonController {
 
     @ExceptionHandler(Exception.class)
