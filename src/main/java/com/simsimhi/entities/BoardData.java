@@ -25,7 +25,7 @@ public class BoardData extends BaseMember {
     @Column(nullable = false)
     private String content;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY) //지연 로딩 
     @JoinColumn(name="userNo")
     private Member member;
 

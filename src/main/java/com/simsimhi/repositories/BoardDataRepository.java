@@ -1,7 +1,9 @@
 package com.simsimhi.repositories;
 
 import com.simsimhi.entities.BoardData;
+import jakarta.persistence.Entity;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
@@ -13,11 +15,19 @@ import java.util.List;
 
 public interface BoardDataRepository extends JpaRepository<BoardData, Long>, QuerydslPredicateExecutor<BoardData> {
 
+    @EntityGraph(attributePaths = "member")  // 즉시 로딩
+    List<BoardData> findBySubjectContaining(String Key);
     List<BoardData> findByCreatedAtBetween(LocalDateTime sdate, LocalDateTime edate, Pageable pageble);
 
     List<BoardData> findBySubjectContainingOrContentContainingOrderBySeqDesc(String subject, String content);
 
-
     @Query("SELECT b FROM BoardData b WHERE b.subject LIKE :key1 OR b.content LIKE :key2 ORDER BY b.seq DESC")
     List<BoardData> getList(@Param("key1") String subject, @Param("key2") String content);
+
+    @Query("select b from BoardData b join b.member")
+    List<BoardData> getList2();
+
+
+
+
 }

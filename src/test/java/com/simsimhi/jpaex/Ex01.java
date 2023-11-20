@@ -5,17 +5,18 @@ import com.simsimhi.entities.BoardData;
 import com.simsimhi.entities.Member;
 import com.simsimhi.repositories.BoardDataRepository;
 import com.simsimhi.repositories.MemberRepository;
-import org.junit.jupiter.api.BeforeEach;
+import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.junit.jupiter.api.Test;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 @SpringBootTest
 @TestPropertySource(properties = "spring.profiles.active=test")
 public class Ex01 {
@@ -24,6 +25,11 @@ public class Ex01 {
 
     @Autowired
     private MemberRepository memberRepository;
+    @Autowired
+    private EntityManager em;
+
+
+
 
     //@BeforeEach
     void init() {
@@ -41,10 +47,8 @@ public class Ex01 {
                 .member(member)
                 .build();
         boardDataRepository.saveAndFlush(item);
-
+        em.clear();
     }
-
-
     @Test
     void test1() {
 
