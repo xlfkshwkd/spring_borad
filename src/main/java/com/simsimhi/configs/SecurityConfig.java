@@ -46,14 +46,31 @@ public class SecurityConfig {
         });
         /** 인증설정  로그인  E */
         http.headers(c ->{
-            c.frameOptions(o ->o.sameOrigin());
-            
+            c.frameOptions(o ->o.sameOrigin()); //iframe 동작 허용
         });
 
         /** 인가설정  접근통제  S*/
         http.authorizeHttpRequests(c ->{
            c.requestMatchers("/mypage/**").authenticated() //로그인한 회원만 접근 가능하다.
-                   .requestMatchers("/admin/**").hasAnyAuthority("ADMIN") //관리자만 접근
+               //    .requestMatchers("/admin/**").hasAnyAuthority("ADMIN") //관리자만 접근
+                   .requestMatchers(
+                           "/front/css/**",
+                           "/front/js/**",
+                           "/front/images/**",
+
+                           "/mobile/js/**",
+                           "/mobile/css/**",
+                           "/mobile/images/**",
+
+                           "/admin/js/**",
+                           "/admin/css/**",
+                           "/admin/images/**",
+
+                           "/common/js/**",
+                           "/common/css/**",
+                           "/common/images/**",
+                           fileUploadConfig.getUrl() + "**"
+                   ).permitAll()
                    .anyRequest().permitAll(); // 나머지 페이지는 권한 필요 X
 
         });
@@ -65,37 +82,12 @@ public class SecurityConfig {
               }else { //회원 정보 페이지 /mypage
                   String url =req.getContextPath() + "/member/login";
                   resp.sendRedirect(url);
-
               }
            });
         });
 
         /** 인가설정  접근통제  E*/
-        
-
         return http.build();
-    }
-
-    public WebSecurityCustomizer webSecurityCustomizer(){
-        // security 경로가 적용될 필요가 없는 경로 설정
-        return w -> w.ignoring().requestMatchers(
-                "/front/css/**",
-                "/front/js/**",
-                "/front/images/**",
-
-                "/mobile/js/**",
-                "/mobile/css/**",
-                "/mobile/images/**",
-
-                "/admin/js/**",
-                "/admin/css/**",
-                "/admin/images/**",
-
-                "/common/js/**",
-                "/common/css/**",
-                "/common/images/**",
-                fileUploadConfig.getUrl() + "**");
-
     }
 
     @Bean

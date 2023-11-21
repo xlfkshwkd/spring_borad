@@ -14,4 +14,6 @@ import java.util.List;
 public class ListData<T> {
     private List<T> content;
     private Pagination pagination;
+
+
 }

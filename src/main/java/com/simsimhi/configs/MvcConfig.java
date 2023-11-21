@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.config.annotation.*;
+//import com.simsimhi.commons.interceptors.SiteConfigInterceptor;
 
 @Configuration
 @EnableJpaAuditing @EnableScheduling
@@ -17,9 +18,14 @@ import org.springframework.web.servlet.config.annotation.*;
 public class MvcConfig implements WebMvcConfigurer {
     @Autowired
     private FileUploadConfig fileUploadConfig;
+
     @Autowired
     private CommonInterceptor commonInterceptor;
 
+    //   @Autowired
+    //   private SiteConfigInterceptor siteConfigInterceptor;
+
+    /*
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/")
@@ -31,6 +37,7 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/admin")
                 .setViewName("front/main/index");
     }
+    */
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

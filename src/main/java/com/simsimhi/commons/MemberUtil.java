@@ -1,5 +1,6 @@
 package com.simsimhi.commons;
 
+import com.simsimhi.commons.constants.MemberType;
 import com.simsimhi.entities.Member;
 
 import jakarta.servlet.http.HttpSession;
@@ -13,6 +14,14 @@ public class MemberUtil {
 
     public boolean isLogin(){
         return getMember() !=null;
+    }
+
+    /**
+     * 관리자 여부 체크
+     * @return
+     */
+    public boolean isAdmin() {
+        return isLogin() && getMember().getMtype() == MemberType.ADMIN;
     }
 
     public Member getMember(){

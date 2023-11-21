@@ -23,7 +23,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         Utils.loginInit(session);
         /** 로그인 회원정보 세션 처리 편의  + */
         MemberInfo memberInfo =(MemberInfo)authentication.getPrincipal();
-        System.out.println(memberInfo);
+      //  System.out.println(memberInfo);
         Member member =memberInfo.getMember();
         session.setAttribute("loginMember",member);
 
