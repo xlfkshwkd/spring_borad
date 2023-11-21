@@ -60,7 +60,6 @@ public class Pagination {
         int lastRangePage = firstRangePage + ranges - 1;
         lastRangePage = lastRangePage > totalPages ? totalPages : lastRangePage;
 
-
         /**
          * 이전 구간 첫번째 페이지
          *      -> 첫번째 구간이 아닐때만 노출

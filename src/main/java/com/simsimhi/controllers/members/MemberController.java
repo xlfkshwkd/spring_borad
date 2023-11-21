@@ -57,7 +57,6 @@ public class MemberController {
         em.flush();
 
         data.setSubject("수정(삭제)");
-
     }
 
 

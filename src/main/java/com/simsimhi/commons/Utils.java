@@ -40,7 +40,8 @@ public class Utils {
             return device.equals("mobile");
         }
 
-        boolean isMobile = request.getHeader("User-Agent").matches(".*(iPhone|iPod|iPad|BlackBerry|Android|Windows CE|LG|MOT|SAMSUNG|SonyEricsson).*");
+        boolean isMobile = request.getHeader("User-Agent")
+                .matches(".*(iPhone|iPod|iPad|BlackBerry|Android|Windows CE|LG|MOT|SAMSUNG|SonyEricsson).*");
 
         return isMobile;
     }
@@ -88,4 +89,5 @@ public class Utils {
 
         return Objects.hash(ip, ua);
     }
+
 }
