@@ -49,13 +49,15 @@ public class JSONTest {
                     .password("12345678")
                     .userNm("사용자01")
                     .build();
-
             members.add(member);
         }
+
         String json = om.writeValueAsString(members);
         System.out.println(json);
 
-        List<Member> members2 = om.readValue(json, new TypeReference<List<Member>>() {});
+        List<Member> members2 = om.readValue(json, new TypeReference<List<Member>>() {
+
+        });
 
         members2.stream().forEach(System.out::println);
     }

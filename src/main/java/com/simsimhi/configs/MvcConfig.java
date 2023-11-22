@@ -1,5 +1,6 @@
 package com.simsimhi.configs;
 import com.simsimhi.commons.interceptors.CommonInterceptor;
+import com.simsimhi.commons.interceptors.SiteConfigInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.MessageSource;
@@ -22,22 +23,8 @@ public class MvcConfig implements WebMvcConfigurer {
     @Autowired
     private CommonInterceptor commonInterceptor;
 
-    //   @Autowired
-    //   private SiteConfigInterceptor siteConfigInterceptor;
-
-    /*
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/")
-                .setViewName("front/main/index");
-
-        registry.addViewController("/mypage")
-                .setViewName("front/main/index");
-
-        registry.addViewController("/admin")
-                .setViewName("front/main/index");
-    }
-    */
+    @Autowired
+    private SiteConfigInterceptor siteConfigInterceptor;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -49,6 +36,9 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(commonInterceptor)
+                .addPathPatterns("/**");
+
+        registry.addInterceptor(siteConfigInterceptor)
                 .addPathPatterns("/**");
 
     }
