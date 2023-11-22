@@ -1,8 +1,8 @@
-package com.simsimhi.models.File;
+package com.simsimhi.models.file;
 
-import com.simsimhi.entities.FileInfo;
 import lombok.RequiredArgsConstructor;
 import net.coobird.thumbnailator.Thumbnails;
+import com.simsimhi.entities.FileInfo;
 import com.simsimhi.repositories.FileInfoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

@@ -1,4 +1,4 @@
-package com.simsimhi.models.File;
+package com.simsimhi.models.file;
 
 import lombok.RequiredArgsConstructor;
 import com.simsimhi.commons.MemberUtil;

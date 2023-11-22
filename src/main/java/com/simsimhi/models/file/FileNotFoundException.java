@@ -1,4 +1,4 @@
-package com.simsimhi.models.File;
+package com.simsimhi.models.file;
 
 import com.simsimhi.commons.Utils;
 import com.simsimhi.commons.exceptions.CommonException;

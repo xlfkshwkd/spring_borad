@@ -1,4 +1,4 @@
-package com.simsimhi.models.File;
+package com.simsimhi.models.file;
 
 import com.simsimhi.entities.FileInfo;
 import jakarta.servlet.http.HttpServletRequest;

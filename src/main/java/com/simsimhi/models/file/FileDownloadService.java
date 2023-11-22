@@ -1,4 +1,4 @@
-package com.simsimhi.models.File;
+package com.simsimhi.models.file;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
