@@ -9,6 +9,6 @@ public class FileNotFoundException extends CommonException {
     public FileNotFoundException() {
         super(Utils.getMessage("NotFound.file", "error"),
                 HttpStatus.NOT_FOUND);
-
     }
+
 }
