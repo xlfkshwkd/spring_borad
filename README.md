@@ -1,4 +1,4 @@
-# boardProject (2023.11.07~)
+# boardProject (2023.11.07~2023.11.23)
 
 ## 초기 설정
 1. Spring Boot
